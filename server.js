@@ -1,5 +1,6 @@
 const express = require('express');
 const scrapeReceiptHandler = require('./api/scrape-receipt');
+const scrapeTelebirrReceiptHandler = require('./api/scrape-telebirr-receipt');
 
 // Create Express app
 const app = express();
@@ -19,6 +20,7 @@ const adaptServerlessToExpress = (handler) => async (req, res) => {
 
 // Mount the serverless function as an Express route
 app.all('/api/scrape-receipt', adaptServerlessToExpress(scrapeReceiptHandler));
+app.all('/api/scrape-telebirr-receipt', adaptServerlessToExpress(scrapeTelebirrReceiptHandler));
 
 // Add a simple home route
 app.get('/', (req, res) => {
@@ -48,6 +50,17 @@ app.get('/', (req, res) => {
             </ul>
             <p><strong>Example:</strong></p>
             <code>/api/scrape-receipt?id=FT25186CS2K308680658</code>
+          </div>
+
+          <div class="endpoint">
+            <h3>Endpoint: /api/scrape-telebirr-receipt</h3>
+            <p><strong>Method:</strong> GET</p>
+            <p><strong>Query Parameters:</strong></p>
+            <ul>
+              <li><code>transaction_number</code> - The receipt transaction number (required)</li>
+            </ul>
+            <p><strong>Example:</strong></p>
+            <code>/api/scrape-telebirr-receipt?transaction_number=CG179W93AJ</code>
           </div>
           
           <p>Try it now: <a href="/api/scrape-receipt?id=FT25186CS2K308680658">/api/scrape-receipt?id=FT25186CS2K308680658</a></p>

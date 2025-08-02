@@ -1,13 +1,15 @@
 {
   "dependencies": {
     "@mistralai/mistralai": "^1.7.4",
-    "axios": "^1.10.0",
+    "axios": "^1.11.0",
+    "cheerio": "^1.1.2",
     "dotenv": "^17.2.0",
     "drizzle-orm": "^0.44.2",
     "express": "^5.1.0",
     "nodemon": "^3.1.10",
     "pdf-parse": "^1.1.1",
-    "puppeteer": "^21.11.0"
+    "puppeteer": "^21.11.0",
+    "telebirr-receipt": "^0.0.1"
   },
   "scripts": {
     "scrape": "node example.js",
