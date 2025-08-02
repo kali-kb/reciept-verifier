@@ -1,5 +1,6 @@
 const https = require('https');
 const pdfParse = require('pdf-parse');
+const logger = require('../logger');
 
 /**
  * Serverless function to scrape CBE receipt data
@@ -35,8 +36,8 @@ module.exports = async (req, res) => {
     // Construct the URL
     const url = `https://apps.cbe.com.et:100/?id=${id}`;
     
-    console.log(`Processing receipt with ID: ${id}`);
-    console.log(`Fetching from URL: ${url}`);
+    logger.info(`Processing receipt with ID: ${id}`);
+    logger.info(`Fetching from URL: ${url}`);
     
     // Download and process the PDF in memory
     const pdfBuffer = await downloadPDF(url);
@@ -57,7 +58,7 @@ module.exports = async (req, res) => {
       });
     }
   } catch (error) {
-    console.error(`Error processing receipt: ${error.message}`);
+    logger.error(`Error processing receipt: ${error.message}`);
     return res.status(500).json({
       success: false,
       error: error.message
@@ -85,7 +86,7 @@ async function downloadPDF(url) {
       
       // Get content type from headers
       const contentType = response.headers['content-type'];
-      console.log(`Content-Type: ${contentType}`);
+      logger.info(`Content-Type: ${contentType}`);
       
       // Check if content type is PDF
       if (!contentType.includes('application/pdf')) {
@@ -100,7 +101,7 @@ async function downloadPDF(url) {
       // Combine chunks when download completes
       response.on('end', () => {
         const buffer = Buffer.concat(chunks);
-        console.log(`Downloaded PDF: ${buffer.length} bytes`);
+        logger.info(`Downloaded PDF: ${buffer.length} bytes`);
         
         // Verify it's a PDF by checking signature
         if (buffer.slice(0, 5).toString() === '%PDF-') {
@@ -134,7 +135,7 @@ async function downloadPDF(url) {
  */
 async function extractDataFromPDFBuffer(pdfBuffer) {
   try {
-    console.log('Extracting data from PDF buffer...');
+    logger.info('Extracting data from PDF buffer...');
     const data = await pdfParse(pdfBuffer);
     
     // Extract the text content
@@ -164,7 +165,7 @@ async function extractDataFromPDFBuffer(pdfBuffer) {
       }
     };
   } catch (error) {
-    console.error(`Error extracting data from PDF: ${error.message}`);
+    logger.error(`Error extracting data from PDF: ${error.message}`);
     return {
       success: false,
       error: error.message

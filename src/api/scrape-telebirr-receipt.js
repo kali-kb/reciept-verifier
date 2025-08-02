@@ -1,5 +1,6 @@
 const https = require('https');
 const { parseFromHTML } = require('telebirr-receipt').utils;
+const logger = require('../logger');
 
 module.exports = async (req, res) => {
   const { transaction_number } = req.query;
@@ -48,7 +49,7 @@ module.exports = async (req, res) => {
   });
 
   request.on('error', (error) => {
-    console.error('Error scraping receipt:', error);
+    logger.error('Error scraping receipt:', error);
     res.status(500).json({
       success: false,
       error: 'Failed to scrape receipt',
