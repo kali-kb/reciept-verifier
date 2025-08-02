@@ -1,1 +1,62 @@
 {"level":"info","message":"Server running at http://localhost:3000"}
+{"level":"info","message":"Server running at http://localhost:3000"}
+{"level":"info","message":"Server running at http://localhost:3000"}
+{"error":"listen EADDRINUSE: address already in use :::3000","level":"error","message":"Server startup error:","stack":"Error: listen EADDRINUSE: address already in use :::3000\n    at Server.setupListenHandle [as _listen2] (node:net:1939:16)\n    at listenInCluster (node:net:1996:12)\n    at Server.listen (node:net:2101:7)\n    at Function.listen (C:\\Users\\USER\\projects\\node\\reciept-verifier\\node_modules\\express\\lib\\application.js:605:24)\n    at Object.<anonymous> (C:\\Users\\USER\\projects\\node\\reciept-verifier\\src\\server.js:68:20)\n    at Module._compile (node:internal/modules/cjs/loader:1730:14)\n    at Object..js (node:internal/modules/cjs/loader:1895:10)\n    at Module.load (node:internal/modules/cjs/loader:1465:32)\n    at Function._load (node:internal/modules/cjs/loader:1282:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:322:14)"}
+{"level":"info","message":"Server running at http://localhost:3000"}
+{"level":"info","message":"Server running at http://localhost:3000"}
+{"level":"info","message":"Server running at http://localhost:3000"}
+{"level":"info","message":"Server running at http://localhost:3000"}
+{"level":"info","message":"Server running at http://localhost:3000"}
+{"level":"info","message":"Processing receipt with ID: CG179W93AJ"}
+{"level":"info","message":"Fetching from URL: https://apps.cbe.com.et:100/?id=CG179W93AJ"}
+{"level":"error","message":"Error processing receipt: Failed to download file: HTTP status code 500"}
+{"level":"info","message":"Server running at http://localhost:3000"}
+{"error":"listen EADDRINUSE: address already in use :::3000","level":"error","message":"Server startup error:","stack":"Error: listen EADDRINUSE: address already in use :::3000\n    at Server.setupListenHandle [as _listen2] (node:net:1939:16)\n    at listenInCluster (node:net:1996:12)\n    at Server.listen (node:net:2101:7)\n    at Function.listen (C:\\Users\\USER\\projects\\node\\reciept-verifier\\node_modules\\express\\lib\\application.js:605:24)\n    at Object.<anonymous> (C:\\Users\\USER\\projects\\node\\reciept-verifier\\src\\server.js:78:20)\n    at Module._compile (node:internal/modules/cjs/loader:1730:14)\n    at Object..js (node:internal/modules/cjs/loader:1895:10)\n    at Module.load (node:internal/modules/cjs/loader:1465:32)\n    at Function._load (node:internal/modules/cjs/loader:1282:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:322:14)"}
+{"level":"info","message":"Server running at http://localhost:3000"}
+{"level":"info","message":"Processing receipt with ID: CG179W93AJ"}
+{"level":"info","message":"Fetching from URL: https://apps.cbe.com.et:100/?id=CG179W93AJ"}
+{"level":"error","message":"Error processing receipt: Invalid Receipt Data"}
+{"level":"info","message":"Processing receipt with ID: FT25192P4WWR08680658"}
+{"level":"info","message":"Fetching from URL: https://apps.cbe.com.et:100/?id=FT25192P4WWR08680658"}
+{"level":"info","message":"Content-Type: application/pdf"}
+{"level":"info","message":"Downloaded PDF: 374318 bytes"}
+{"level":"info","message":"Extracting data from PDF buffer..."}
+{"level":"info","message":"Processing receipt with ID: FT25192P4WWR08680658"}
+{"level":"info","message":"Fetching from URL: https://apps.cbe.com.et:100/?id=FT25192P4WWR08680658"}
+{"level":"info","message":"Content-Type: application/pdf"}
+{"level":"info","message":"Downloaded PDF: 374318 bytes"}
+{"level":"info","message":"Extracting data from PDF buffer..."}
+{"level":"info","message":"Server running at http://localhost:3000"}
+{"level":"info","message":"Processing receipt with ID: FT25192P4WWR08680658"}
+{"level":"info","message":"Fetching from URL: https://apps.cbe.com.et:100/?id=FT25192P4WWR08680658"}
+{"level":"info","message":"Content-Type: application/pdf"}
+{"level":"info","message":"Downloaded PDF: 374318 bytes"}
+{"level":"info","message":"Extracting data from PDF buffer..."}
+{"cause":{"length":83,"name":"error"},"level":"error","message":"Error scraping receipt: Failed query: select \"id\", \"transaction_id\", \"amount\", \"provider\", \"date\" from \"payment_transactions\" where \"payment_transactions\".\"transaction_id\" = $1\nparams: CG179W93AJ","params":["CG179W93AJ"],"query":"select \"id\", \"transaction_id\", \"amount\", \"provider\", \"date\" from \"payment_transactions\" where \"payment_transactions\".\"transaction_id\" = $1","stack":"Error: Failed query: select \"id\", \"transaction_id\", \"amount\", \"provider\", \"date\" from \"payment_transactions\" where \"payment_transactions\".\"transaction_id\" = $1\nparams: CG179W93AJ\n    at NodePgPreparedQuery.queryWithCache (C:\\Users\\USER\\projects\\node\\reciept-verifier\\node_modules\\drizzle-orm\\pg-core\\session.cjs:66:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\USER\\projects\\node\\reciept-verifier\\node_modules\\drizzle-orm\\node-postgres\\session.cjs:152:22\n    at async module.exports (C:\\Users\\USER\\projects\\node\\reciept-verifier\\src\\api\\scrape-telebirr-receipt.js:56:33)\n    at async C:\\Users\\USER\\projects\\node\\reciept-verifier\\src\\server.js:13:5"}
+{"level":"info","message":"Server running at http://localhost:3000"}
+{"level":"info","message":"Processing receipt with ID: FT25192P4WWR08680658"}
+{"level":"info","message":"Fetching from URL: https://apps.cbe.com.et:100/?id=FT25192P4WWR08680658"}
+{"level":"info","message":"Content-Type: application/pdf"}
+{"level":"info","message":"Downloaded PDF: 374318 bytes"}
+{"level":"info","message":"Extracting data from PDF buffer..."}
+{"level":"info","message":"Processing receipt with ID: FT25192P4WWR08680658"}
+{"level":"info","message":"Fetching from URL: https://apps.cbe.com.et:100/?id=FT25192P4WWR08680658"}
+{"level":"info","message":"Content-Type: application/pdf"}
+{"level":"info","message":"Downloaded PDF: 374318 bytes"}
+{"level":"info","message":"Extracting data from PDF buffer..."}
+{"level":"info","message":"Processing receipt with ID: FT25192P4WWR08680658"}
+{"level":"info","message":"Fetching from URL: https://apps.cbe.com.et:100/?id=FT25192P4WWR08680658"}
+{"level":"info","message":"Content-Type: application/pdf"}
+{"level":"info","message":"Downloaded PDF: 374318 bytes"}
+{"level":"info","message":"Extracting data from PDF buffer..."}
+{"level":"info","message":"Processing receipt with ID: FT25192P4WWR086806585"}
+{"level":"info","message":"Fetching from URL: https://apps.cbe.com.et:100/?id=FT25192P4WWR086806585"}
+{"level":"error","message":"Error processing receipt: Failed to download file: HTTP status code 404"}
+{"level":"info","message":"Processing receipt with ID: FT25192P4WWR08680651"}
+{"level":"info","message":"Fetching from URL: https://apps.cbe.com.et:100/?id=FT25192P4WWR08680651"}
+{"level":"error","message":"Error processing receipt: Failed to download file: HTTP status code 404"}
+{"level":"info","message":"Processing receipt with ID: FT25192P4WWR08680658"}
+{"level":"info","message":"Fetching from URL: https://apps.cbe.com.et:100/?id=FT25192P4WWR08680658"}
+{"level":"info","message":"Content-Type: application/pdf"}
+{"level":"info","message":"Downloaded PDF: 374318 bytes"}
+{"level":"info","message":"Extracting data from PDF buffer..."}

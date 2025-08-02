@@ -1,9 +1,11 @@
 const express = require('express');
+const compression = require('compression');
 const logger = require('./logger');
 const scrapeCbeHandler = require('./api/scrape-receipt');
 const scrapeTelebirrHandler = require('./api/scrape-telebirr-receipt');
 
 const app = express();
+app.use(compression());
 const PORT = process.env.PORT || 3000;
 
 const adaptServerlessToExpress = (handler) => async (req, res) => {
@@ -19,6 +21,14 @@ const adaptServerlessToExpress = (handler) => async (req, res) => {
 
 app.all('/api/cbe', adaptServerlessToExpress(scrapeCbeHandler));
 app.all('/api/telebirr', adaptServerlessToExpress(scrapeTelebirrHandler));
+
+// Global error handler
+app.use((err, req, res, next) => {
+  logger.error('Unhandled error:', { error: err.message, stack: err.stack });
+  if (!res.headersSent) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
 
 app.get('/', (req, res) => {
   res.send(`

@@ -1,6 +1,9 @@
 const https = require('https');
 const pdfParse = require('pdf-parse');
 const logger = require('../logger');
+const { db } = require('../db');
+const { payment_transactions } = require('../db/schema');
+const { eq } = require('drizzle-orm');
 
 /**
  * Serverless function to scrape CBE receipt data
@@ -46,6 +49,32 @@ module.exports = async (req, res) => {
     const extractionResult = await extractDataFromPDFBuffer(pdfBuffer);
     
     if (extractionResult.success) {
+      const { payerName, amount, transactionNumber } = extractionResult.data;
+
+      try {
+        const existingTransaction = await db.select().from(payment_transactions).where(eq(payment_transactions.transaction_id, transactionNumber));
+
+        if (existingTransaction.length > 0) {
+          return res.status(409).json({
+            success: false,
+            error: 'Transaction with this ID already exists',
+          });
+        }
+
+        await db.insert(payment_transactions).values({
+          transaction_id: transactionNumber,
+          amount: Math.round(amount * 100),
+          provider: 'cbe',
+          date: new Date().toISOString(),
+        });
+      } catch (dbError) {
+        logger.error(`Database error: ${dbError.message}`);
+        return res.status(500).json({
+          success: false,
+          error: 'Failed to save transaction to the database.',
+        });
+      }
+
       // Return only the extracted data
       return res.status(200).json({
         success: true,
@@ -80,7 +109,11 @@ async function downloadPDF(url) {
     }, (response) => {
       // Check if the response is successful
       if (response.statusCode !== 200) {
-        reject(new Error(`Failed to download file: HTTP status code ${response.statusCode}`));
+        if (response.statusCode === 500) {
+          reject(new Error('Invalid Receipt Data'));
+        } else {
+          reject(new Error(`Failed to download file: HTTP status code ${response.statusCode}`));
+        }
         return;
       }
       
@@ -153,7 +186,7 @@ async function extractDataFromPDFBuffer(pdfBuffer) {
     
     // Get the extracted values
     const payerName = payerMatch ? payerMatch[1].trim() : null;
-    const amount = amountMatch ? amountMatch[1].trim() : null;
+    const amount = amountMatch ? parseFloat(amountMatch[1].replace(/,/g, '')) : null;
     const transactionNumber = transactionMatch ? transactionMatch[1].trim() : null;
     
     return {
