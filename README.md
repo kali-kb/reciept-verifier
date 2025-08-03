@@ -8,4 +8,6 @@ When working with this API, it is important to understand how monetary values ar
 
 For example, an amount of `123.45` will be stored as `12345`.
 
+the /api/telebirr endpoint will not work for now because this server is hosted on Vercel and the base url used to fetch the telebirr reciept will block ip from outside of Ethiopia
+
 When you receive an amount from the API, you should divide it by 100 to get the original decimal value. When you send an amount to the API, you should multiply it by 100 and send it as an integer.
