@@ -176,16 +176,19 @@ async function extractDataFromPDFBuffer(pdfBuffer) {
     
     // Define regex patterns for extracting the required information
     const payerPattern = /Payer([^\n]+)/;
-    const amountPattern = /Transferred Amount([\d,.]+)\s*ETB/;
+    const amountPattern = /Transferred Amount([\u0000-\uffff,.]+)\s*ETB/;
     const transactionPattern = /Reference No\.\s*\(VAT Invoice No\)([^\n]+)/;
+    const receiverPattern = /Receiver([^\n]+)/; // Added for receiver name
     
     // Extract the information using regex
     const payerMatch = text.match(payerPattern);
     const amountMatch = text.match(amountPattern);
     const transactionMatch = text.match(transactionPattern);
-    
+    const receiverMatch = text.match(receiverPattern);
+
     // Get the extracted values
     const payerName = payerMatch ? payerMatch[1].trim() : null;
+    const receiverName = receiverMatch ? receiverMatch[1].trim() : null;
     const amount = amountMatch ? parseFloat(amountMatch[1].replace(/,/g, '')) : null;
     const transactionNumber = transactionMatch ? transactionMatch[1].trim() : null;
     
@@ -193,6 +196,7 @@ async function extractDataFromPDFBuffer(pdfBuffer) {
       success: true,
       data: {
         payerName,
+        receiverName, // Added receiver name
         amount,
         transactionNumber
       }

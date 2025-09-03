@@ -15,6 +15,13 @@
       "when": 1754165385528,
       "tag": "0001_wonderful_ironclad",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1756911338888,
+      "tag": "0002_aromatic_next_avengers",
+      "breakpoints": true
     }
   ]
 }

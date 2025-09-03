@@ -60,3 +60,20 @@
 {"level":"info","message":"Content-Type: application/pdf"}
 {"level":"info","message":"Downloaded PDF: 374318 bytes"}
 {"level":"info","message":"Extracting data from PDF buffer..."}
+{"level":"info","message":"Server running at http://localhost:3000"}
+{"level":"info","message":"Processing receipt with ID: FT25186CS2K308680658"}
+{"level":"info","message":"Fetching from URL: https://apps.cbe.com.et:100/?id=FT25186CS2K308680658"}
+{"level":"info","message":"Content-Type: application/pdf"}
+{"level":"info","message":"Downloaded PDF: 374301 bytes"}
+{"level":"info","message":"Extracting data from PDF buffer..."}
+{"level":"info","message":"Processing receipt with ID: FT25186CS2K308680658"}
+{"level":"info","message":"Fetching from URL: https://apps.cbe.com.et:100/?id=FT25186CS2K308680658"}
+{"level":"info","message":"Content-Type: application/pdf"}
+{"level":"info","message":"Downloaded PDF: 374301 bytes"}
+{"level":"info","message":"Extracting data from PDF buffer..."}
+{"level":"info","message":"Server running at http://localhost:3000"}
+{"level":"info","message":"Processing receipt with ID: FT25186CS2K308680658"}
+{"level":"info","message":"Fetching from URL: https://apps.cbe.com.et:100/?id=FT25186CS2K308680658"}
+{"level":"info","message":"Content-Type: application/pdf"}
+{"level":"info","message":"Downloaded PDF: 374301 bytes"}
+{"level":"info","message":"Extracting data from PDF buffer..."}
